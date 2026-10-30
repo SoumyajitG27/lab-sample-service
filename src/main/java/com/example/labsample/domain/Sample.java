@@ -46,27 +46,27 @@ public class Sample {
         return id;
     }
 
-    public String getProductid() {
+    public String getProductId() {
         return productId;
     }
 
-    public String getBatchid() {
+    public String getBatchId() {
         return batchId;
     }
 
-    public SampleStatus getSamplestatus() {
+    public SampleStatus getSampleStatus() {
         return sampleStatus;
     }
 
-    public String getReceivedby() {
+    public String getReceivedBy() {
         return receivedBy;
     }
 
-    public Instant getReceiveddt() {
+    public Instant getReceivedDt() {
         return receivedDt;
     }
 
-    public void setSamplestatus(SampleStatus samplestatus) {
+    public void setSampleStatus(SampleStatus samplestatus) {
         this.sampleStatus = samplestatus;
     }
 }

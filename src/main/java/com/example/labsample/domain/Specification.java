@@ -5,14 +5,12 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(
-        name = "specifications",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"productCode", "testName"})
+        name = "specifications"
 )
 public class Specification {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EmbeddedId
+    private SpecCompositeKey id;
 
     @Column(nullable = false, length = 64)
     private String productCode;
@@ -32,12 +30,13 @@ public class Specification {
     protected Specification() {
     }
 
-    public Specification(
+    public Specification(String specId, long specVersionId,
             String productCode,
             String testName,
             BigDecimal lowerLimit,
             BigDecimal upperLimit,
             String unit) {
+        this.id = new SpecCompositeKey(specId, specVersionId);
         this.productCode = productCode;
         this.testName = testName;
         this.lowerLimit = lowerLimit;
@@ -45,7 +44,9 @@ public class Specification {
         this.unit = unit;
     }
 
-    public Long getId() { return id; }
+    public SpecCompositeKey getId() { return id; }
+    public String getSpecId() { return id.specId(); }
+    public long getSpecVersionId() { return id.specVersionId(); }
     public String getProductCode() { return productCode; }
     public String getTestName() { return testName; }
     public BigDecimal getLowerLimit() { return lowerLimit; }

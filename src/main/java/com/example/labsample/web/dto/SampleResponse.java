@@ -15,11 +15,11 @@ public record SampleResponse (
     public static SampleResponse from (Sample sample){
         return new SampleResponse(
                 sample.getId(),
-                sample.getProductid(),
-                sample.getBatchid(),
-                sample.getSamplestatus().name(),
-                sample.getReceivedby(),
-                sample.getReceiveddt()
+                sample.getProductId(),
+                sample.getBatchId(),
+                sample.getSampleStatus().name(),
+                sample.getReceivedBy(),
+                sample.getReceivedDt()
         );
     }
 }
